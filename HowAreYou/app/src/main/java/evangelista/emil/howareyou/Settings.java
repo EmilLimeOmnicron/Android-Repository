@@ -12,5 +12,7 @@ public class Settings {
 
    //set times that alarm wont ring
 
+   //
+
 
 }
