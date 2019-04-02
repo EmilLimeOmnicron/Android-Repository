@@ -1,60 +1,67 @@
 package evangelista.emil.howareyou;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextClock;
 import android.widget.TimePicker;
+import android.widget.Toolbar;
+
+import java.util.Calendar;
+
+
+//
+//minimum viable product set notification times/delete notification times
+//store ratings
+
 
 public class MainActivity extends AppCompatActivity {
 
    TimePicker alarmTime;
    TextClock currentTime;
+   Switch mSwitch;
 
-   @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
 
 
-      EditText text = (EditText)findViewById(R.id.editText);
-      String str = text.getText().toString();
-      //
+      Toolbar myToolbar =  findViewById(R.id.toolbar);
+      // setSupportActionBar();
 
-   }
-
-
-   private void setNotification(){
-
-      //if(time == input) then notify user
-      NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
-      mBuilder.setSmallIcon(R.drawable.ic_launcher_foreground);
-      mBuilder.setContentTitle("How are you?");
-      mBuilder.setContentText("Don't forget to log in how you feel!");
+      Calendar calendar = Calendar.getInstance();
+      calendar.set(Calendar.HOUR_OF_DAY, 18);
+      calendar.set(Calendar.MINUTE, 30);
+      calendar.set(Calendar.SECOND, 0);
+      Intent intent1 = new Intent(MainActivity.this, Settings.class);
+      PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0,intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+      AlarmManager am = (AlarmManager) MainActivity.this.getSystemService(MainActivity.this.ALARM_SERVICE);
+      am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_HOUR, pendingIntent);
 
 
-      Intent resultIntent = new Intent(this, MainActivity.class);
-      TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-      stackBuilder.addParentStack(MainActivity.class);
-
-   // Adds the Intent that starts the Activity to the top of the stack
-      stackBuilder.addNextIntent(resultIntent);
-      PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
-      mBuilder.setContentIntent(resultPendingIntent);
 
 
-      // Add as notification
-      NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-      manager.notify(0, mBuilder.build());
+      mSwitch = (Switch) findViewById(R.id.switch1);
+      mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            // do something, the isChecked will be
+            // true if the switch is in the On position
+         }
+      });
    }
 }
 
 
-//minimum viable product set notification times/delete notification times
-//store ratings

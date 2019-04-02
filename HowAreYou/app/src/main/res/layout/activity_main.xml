@@ -5,4 +5,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="evangelista.emil.howareyou.MainActivity"/>
+    tools:context="evangelista.emil.howareyou.MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="193dp"
+        android:layout_height="87dp"
+        android:text="How Are You"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="93dp"/>
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="203dp"
+        android:layout_height="44dp"
+        android:text=""
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="343dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start or Stop Notifications"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="263dp"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="480dp"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logs"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="480dp"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp"/>
+</android.support.constraint.ConstraintLayout>

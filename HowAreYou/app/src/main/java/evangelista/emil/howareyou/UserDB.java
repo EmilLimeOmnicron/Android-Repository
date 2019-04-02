@@ -55,13 +55,13 @@ public class UserDB extends SQLiteOpenHelper {
       db.execSQL(sql);
    }
 
-   /** Inserts a new location to the table locations */
+   /** Inserts a new entry to the table locations */
    public long insert(ContentValues contentValues){
       long rowID = mDB.insert(DATABASE_TABLE, null, contentValues);
       return rowID;
    }
 
-   /** Deletes all locations from the table */
+   /** Deletes from the table */
    public int del(){
       int cnt = mDB.delete(DATABASE_TABLE, null , null);
       return cnt;
